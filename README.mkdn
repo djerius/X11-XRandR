@@ -1,0 +1,36 @@
+# NAME
+
+X11::Xrandr - a really awesome library
+
+# VERSION
+
+version 0.01
+
+# SYNOPSIS
+
+# BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+[https://rt.cpan.org/Public/Dist/Display.html?Name=X11-Xrandr](https://rt.cpan.org/Public/Dist/Display.html?Name=X11-Xrandr) or by email
+to [bug-X11-Xrandr@rt.cpan.org](mailto:bug-X11-Xrandr@rt.cpan.org).
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
+# SOURCE
+
+The development version is on github at [https://github.com/djerius/x11-xrandr](https://github.com/djerius/x11-xrandr)
+and may be cloned from [git://github.com/djerius/x11-xrandr.git](git://github.com/djerius/x11-xrandr.git)
+
+# AUTHOR
+
+Diab Jerius <djerius@cpan.org>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2018 by Smithsonian Astrophysical Observatory.
+
+This is free software, licensed under:
+
+    The GNU General Public License, Version 3, June 2007
