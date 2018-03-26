@@ -3,7 +3,10 @@ package X11::Xrandr::PropertyEDID;
 use Types::Standard qw[ ArrayRef InstanceOf Str ];
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 extends 'X11::Xrandr::Property';
 

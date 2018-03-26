@@ -4,7 +4,10 @@ use Types::Standard qw[ Enum ];
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 has $_            => (
@@ -14,10 +17,10 @@ has $_            => (
 ) for qw[ x y ];
 
 has unit => (
-	     is => 'ro',
-	     isa => Enum[ qw[ pixel mm ] ],
-	     default => 'pixel',
-	    );
+             is => 'ro',
+             isa => Enum[ qw[ pixel mm ] ],
+             default => 'pixel',
+            );
 
 sub to_string {
     sprintf( "%dx%d", $_[0]->x, $_[0]->y );

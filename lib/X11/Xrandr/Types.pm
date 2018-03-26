@@ -1,13 +1,19 @@
 package X11::Xrandr::Types;
 
+use strict;
+use warnings;
+
 use Type::Utils -all;
 use Types::Standard -types;
+
+our $VERSION = '0.01';
 
 use Type::Library
   -base,
   -declare => qw(
   Filter
   Capability
+  Connection
   Direction
   Reflection
   Relation

@@ -4,7 +4,10 @@ use Types::Standard qw[ Enum ];
 use Types::Common::Numeric qw[ PositiveNum ];
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 has value         => (

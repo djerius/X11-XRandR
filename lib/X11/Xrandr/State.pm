@@ -9,6 +9,10 @@ use IPC::Cmd;
 use Carp ();
 
 use Moo;
+use namespace::clean;
+use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 has screen => (
     is       => 'ro',

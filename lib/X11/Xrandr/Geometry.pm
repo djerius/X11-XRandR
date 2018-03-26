@@ -6,7 +6,10 @@ use X11::Xrandr::Dimension;
 use X11::Xrandr::Offset;
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 

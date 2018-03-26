@@ -5,7 +5,10 @@ use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 use X11::Xrandr::Types -types;
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 

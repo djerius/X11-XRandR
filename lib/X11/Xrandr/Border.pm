@@ -3,7 +3,10 @@ package X11::Xrandr::Border;
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 has $_            => (

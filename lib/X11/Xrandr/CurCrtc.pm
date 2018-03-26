@@ -5,26 +5,29 @@ use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 use X11::Xrandr::Types -types;
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 
 has panning => (
     is       => 'ro',
     isa      => InstanceOf ['X11::Xrandr::Geometry'],
-		predicate => 1
+                predicate => 1
 );
 
 has tracking => (
     is       => 'ro',
     isa      => InstanceOf ['X11::Xrandr::Geometry'],
-		predicate => 1
+                predicate => 1
 );
 
 has border => (
     is       => 'ro',
     isa      => InstanceOf ['X11::Xrandr::Border'],
-		predicate => 1
+                predicate => 1
 );
 
 sub to_string {

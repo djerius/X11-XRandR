@@ -5,7 +5,10 @@ use Types::Standard qw[ Undef ];
 use X11::Xrandr::Types -types;
 
 use Moo;
+use namespace::clean;
 use MooX::StrictConstructor;
+
+our $VERSION = '0.01';
 
 has filter => (
     is        => 'ro',
@@ -19,9 +22,9 @@ has matrix => (
     isa     => XTransform,
     default => sub {
         [ [ 1, 0, 0 ],
-	  [ 0, 1, 0 ],
-	  [ 0, 0, 1 ],
-	];
+          [ 0, 1, 0 ],
+          [ 0, 0, 1 ],
+        ];
     },
 );
 

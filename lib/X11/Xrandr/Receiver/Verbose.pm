@@ -3,6 +3,8 @@ package X11::Xrandr::Receiver::Verbose;
 use strict;
 use warnings;
 
+our $VERSION = '0.01';
+
 use Carp;
 use Memoize;
 
