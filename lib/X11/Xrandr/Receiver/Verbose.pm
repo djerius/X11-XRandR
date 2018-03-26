@@ -1,5 +1,11 @@
 package X11::Xrandr::Receiver::Verbose;
 
+# ABSTRACT: The Pegex Receiver for L<X11::Xrandr::Grammar::Verbose>
+
+=for Pod::Coverage *EVERYTHING*
+
+=cut
+
 use strict;
 use warnings;
 
@@ -226,4 +232,8 @@ sub got_output_header_reflections {
 }
 
 
+
 1;
+
+# COPYRIGHT
+

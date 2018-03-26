@@ -1,5 +1,7 @@
 package X11::Xrandr::Grammar::Monitors;
 
+# ABSTRACT: The Compiled Pegex Grammar for xrandr --listmonitors output
+
 use strict;
 use warnings;
 
@@ -12,3 +14,5 @@ sub make_tree {
 }
 
 1;
+
+# COPYRIGHT

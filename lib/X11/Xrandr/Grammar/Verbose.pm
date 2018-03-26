@@ -1,5 +1,7 @@
 package X11::Xrandr::Grammar::Verbose;
 
+# ABSTRACT: The Compiled Pegex Grammar for xrandr --verbose output
+
 use strict;
 use warnings;
 
@@ -1503,3 +1505,5 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
 }
 
 1;
+
+# COPYRIGHT

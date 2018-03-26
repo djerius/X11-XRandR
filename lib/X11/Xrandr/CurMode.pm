@@ -1,5 +1,7 @@
 package X11::Xrandr::CurMode;
 
+# ABSTRACT: Current Mode
+
 use Types::Standard qw[ InstanceOf ];
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 use X11::Xrandr::Types -types;
@@ -12,11 +14,23 @@ our $VERSION = '0.01';
 
 use overload '""' => \&to_string;
 
+=attr geometry
+
+An instance of L<X11::Xrandr::Geometry>.
+
+=cut
+
 has geometry => (
     is       => 'ro',
     isa      => InstanceOf ['X11::Xrandr::Geometry'],
     required => 1
 );
+
+=attr rotation
+
+For values, see L<X11::Xrandr::Types/Direction>.
+
+=cut
 
 has rotation => (
     is       => 'ro',
@@ -24,11 +38,25 @@ has rotation => (
     required => 1,
 );
 
+=attr reflection
+
+For values, see L<X11::Xrandr::Types/Reflection>. Optional.
+
+=method has_reflection
+
+I<Boolean>  True if L<reflection> was specified.
+
+=cut
+
 has reflection => (
     is        => 'ro',
     isa       => Reflection,
     predicate => 1,
 );
+
+=attr id
+
+=cut
 
 has id => (
     is  => 'ro',
@@ -62,13 +90,34 @@ my %MapReflectionOut = (
     'xy'           => 'X and Y axis',
 );
 
+=method map_reflection_in
+
+Map a reflection from C<xrandr>'s nomenclature for the current mode to a L<X11::Xrandr::Type/Reflection> value.
+
+=cut
+
 sub map_reflection_in {
     my $self = shift;
     return $MapReflectionIn{ $_[0] };
 }
+
+=method map_reflection_out
+
+Map a L<X11::Xrandr::Type/Reflection> value to C<xrandr>'s nomenclature for the current mode.
+
+=cut
+
 sub map_reflection_out {
     my $self = shift;
     return $MapReflectionOut{ $_[0] };
 }
 
+=method to_string
+
+Return a string rendition of the object just as B<xrandr> would.
+
+=cut
+
 1;
+
+# COPYRIGHT
