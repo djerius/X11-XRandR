@@ -32,7 +32,7 @@ output_header :
          .BLANK+ +output_connection
 	 +output_primary
          ( .BLANK+ +cur_mode )?
-	 .BLANK+ LPAREN +rotations - +output_header_reflection RPAREN
+	 .BLANK+ LPAREN +rotations - +output_header_reflections RPAREN
 
          # only if cur_mode
 	 ( .BLANK+ +dimension_mm )?
@@ -166,7 +166,7 @@ CRTCs      : + 'CRTCs:' .BLANK+  integer+ % .BLANK EOL
 rotations : rotation* % +
 rotation  : / ( 'normal' | 'left' | 'inverted' | 'right' ) /
 
-output_header_reflection : output_header_reflection_xy* % +
+output_header_reflections : output_header_reflection_xy* % +
 output_header_reflection_xy  : / ( 'x axis' | 'y axis' ) /
 
 integer : / ( DIGIT+ ) /

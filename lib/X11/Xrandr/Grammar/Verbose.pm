@@ -1091,7 +1091,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         },
         {
           '-wrap' => 1,
-          '.ref' => 'output_header_reflection'
+          '.ref' => 'output_header_reflections'
         },
         {
           '.ref' => 'RPAREN'
@@ -1120,7 +1120,10 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         }
       ]
     },
-    'output_header_reflection' => {
+    'output_header_reflection_xy' => {
+      '.rgx' => qr/\G(x\ axis|y\ axis)/
+    },
+    'output_header_reflections' => {
       '+max' => 1,
       '.all' => [
         {
@@ -1139,9 +1142,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
           ]
         }
       ]
-    },
-    'output_header_reflection_xy' => {
-      '.rgx' => qr/\G(x\ axis|y\ axis)/
     },
     'output_name' => {
       '.rgx' => qr/\G(\S+)/

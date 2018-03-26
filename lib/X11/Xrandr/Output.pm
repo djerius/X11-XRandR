@@ -97,9 +97,9 @@ has rotations => (
     required => 1,
 );
 
-has reflection => (
+has reflections => (
     is       => 'ro',
-    isa      => Reflection,
+    isa      => ArrayRef [ Enum[ 'x', 'y' ] ],
     required => 1,
 );
 

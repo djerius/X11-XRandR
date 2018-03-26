@@ -51,10 +51,6 @@ sub gotrule {
       'X11::Xrandr::' . camelize( $self->{parser}{rule} ),
       'X11::Xrandr::' . camelize( $name );
 
-    $DB::single = $name eq 'property_EDID';
-
-# print STDERR "MODULE: $module_name: ", _require_module( $module_name ), " \n";
-# $DB::single = $name eq 'panning';
     if ( defined $module_name ) {
         $res = eval { $module_name->new( $_[0] ) };
         if ( $@ ) {
@@ -192,13 +188,12 @@ sub got_cur_mode_reflection {
     $self->gotrule( X11::Xrandr::CurMode->map_reflection_in( $_[0] ) );
 }
 
-sub got_output_header_reflection {
+sub got_output_header_reflections {
     my $self = shift;
 
-    my $reflection;
-    $reflection .= $_ for sort map { /(x|y)/ ; $1 } @{$_[0]};
+    s/\s*axis// for  @{$_[0]};
 
-    $self->gotrule( $reflection );
+    $self->gotrule( @_ );
 }
 
 
