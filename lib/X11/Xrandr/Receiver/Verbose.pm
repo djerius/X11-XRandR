@@ -14,9 +14,9 @@ use String::CamelCase qw[ camelize ];
 
 use Data::Dump qw[ dd pp ];
 
-our %NameMap = (
-    dimension_mm    => 'dimension',
-);
+use X11::Xrandr::CurMode;
+
+our %NameMap = ( dimension_mm => 'dimension', );
 
 sub remove_empty_arrays {
     scalar [ map { 'ARRAY' eq ref $_ ? ( @{$_} ? $_ : () ) : $_ } @{ $_[0] } ];
@@ -30,7 +30,9 @@ sub merge_hashes {
 # keep looking for it.
 memoize( '_require_module' );
 sub _require_module {
-    eval { require_module( $_[0] ); 1; };
+    my $name = 'X11::Xrandr::' . camelize( $_[0] );
+    return $name if eval { require_module( $name ); 1; };
+    return;
 }
 
 sub gotrule {
@@ -43,13 +45,17 @@ sub gotrule {
 
     my $name = $self->{parser}{rule};
 
-    defined $NameMap{$name}
-      ? $name = $NameMap{$name}
-      : $name =~ s/^(EDID|frequency|screen|output_header|output|mode|cur_mode)_//;
+    if ( defined $NameMap{$name} ) {
+        $name = $NameMap{$name};
+    }
+    else {
+        $name
+          =~ s/^(EDID|frequency|screen|output_header|output|mode|cur_mode)_//;
+    }
 
-    my ( $module_name ) = grep { _require_module( $_ ) }
-      'X11::Xrandr::' . camelize( $self->{parser}{rule} ),
-      'X11::Xrandr::' . camelize( $name );
+    my ( $module_name )
+      = map { _require_module( $_ ) || () } $self->{parser}{rule},
+      $name;
 
     if ( defined $module_name ) {
         $res = eval { $module_name->new( $_[0] ) };
@@ -66,7 +72,6 @@ sub gotrule {
 }
 
 sub log {
-
     my ( $self, $msg ) = @_;
 
     if ( $ENV{XRANDR_DEBUG} ) {
@@ -114,18 +119,52 @@ sub got_screen_dims {
     } );
 }
 
-*got_Identifier = *got_Panning = *got_Timestamp = *got_Tracking = *got_Subpixel
-  = *got_Gamma = *got_CRTC = *got_CRTCs = *got_Border = *got_Brightness
-  = *got_mode_sync = *got_mode_refresh = *got_filter = *got_supported = *got_ranges = *got_Clones
-  = *got_panning
-  = *got_property_EDID = \&gotrule_unwrap_array;
+#<<< no perltidy
+*got_Border =
+*got_Brightness =
+*got_CRTC =
+*got_CRTCs =
+*got_Clones =
+*got_Gamma =
+*got_Identifier =
+*got_Panning =
+*got_Subpixel =
+*got_Timestamp =
+*got_Tracking =
+*got_filter =
+*got_mode_refresh =
+*got_mode_sync =
+*got_panning =
+*got_property_EDID =
+*got_ranges =
+*got_supported =
+\&gotrule_unwrap_array;
+#>>> no perltidy
 
-*got_xrandr = *got_output = *got_cur_mode = *got_cur_crtc = *got_geometry
-  = *got_dimension     = *got_screen          
-  = *got_output_header = *got_mode_horizontal = *got_mode_vertical = *got_mode
-  = *got_border_values = *got_frequency       = \&gotrule_merge_hashes;
+#<<< no perltidy
+*final =
+*got_border_values =
+*got_cur_crtc =
+*got_cur_mode =
+*got_dimension =
+*got_frequency =
+*got_geometry =
+*got_mode =
+*got_mode_horizontal =
+*got_mode_vertical =
+*got_output =
+*got_output_header =
+*got_screen =
+*got_xrandr =
+\&gotrule_merge_hashes;
+#>>> no perltidy
 
-*got_mode_current = *got_mode_preferred = *got_output_primary = \&gotrule_boolean;
+#<<< no perltidy
+*got_mode_current =
+*got_mode_preferred =
+*got_output_primary =
+\&gotrule_boolean;
+#>>> no perltidy
 
 sub got_float {
     my $self = shift;
@@ -137,7 +176,7 @@ sub got_property {
     my $self = shift;
 
     my %property;
-    @property{'name', 'value'} = @{ $_[0][0] };
+    @property{ 'name', 'value' } = @{ $_[0][0] };
 
     if ( @{ $_[0] } > 1 ) {
         die( "expected exactly one key in property acceptable values:",
@@ -181,8 +220,6 @@ sub got_hexint {
     $self->gotrule( hex $_[0] );
 }
 
-use X11::Xrandr::CurMode;
-
 sub got_cur_mode_reflection {
     my $self = shift;
     $self->gotrule( X11::Xrandr::CurMode->map_reflection_in( $_[0] ) );
@@ -191,7 +228,7 @@ sub got_cur_mode_reflection {
 sub got_output_header_reflections {
     my $self = shift;
 
-    s/\s*axis// for  @{$_[0]};
+    s/\s*axis// for @{ $_[0] };
 
     $self->gotrule( @_ );
 }
