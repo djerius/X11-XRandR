@@ -97,6 +97,7 @@ sub gotrule_unwrap_array {
 
 sub gotrule_merge_hashes {
     my $self = shift;
+
     my $hash = merge_hashes( remove_empty_arrays( shift ) );
     return unless keys %$hash;
     $self->gotrule( $hash );
@@ -118,6 +119,8 @@ sub got_screen_dims {
         cur_dim => delete $dim{current}{dimension},
     } );
 }
+
+*got_state = \&gotrule_merge_hashes;
 
 #<<< no perltidy
 *got_Border =
@@ -142,7 +145,6 @@ sub got_screen_dims {
 #>>> no perltidy
 
 #<<< no perltidy
-*final =
 *got_border_values =
 *got_cur_crtc =
 *got_cur_mode =

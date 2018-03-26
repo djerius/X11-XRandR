@@ -5,8 +5,8 @@ use constant file => './share/verbose.pgx';
 
 sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
   {
-    '+grammar' => 'xrandr-verbose',
-    '+toprule' => 'xrandr_verbose',
+    '+grammar' => 'state',
+    '+toprule' => 'state',
     '+version' => '0.0.1',
     'BLANK' => {
       '.rgx' => qr/\G[\ \t]/
@@ -1440,6 +1440,18 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
     'screen_id' => {
       '.ref' => 'integer'
     },
+    'state' => {
+      '.all' => [
+        {
+          '-wrap' => 1,
+          '.ref' => 'screen'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'outputs'
+        }
+      ]
+    },
     'supported' => {
       '.all' => [
         {
@@ -1478,18 +1490,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
     },
     'x' => {
       '.rgx' => qr/\G([0-9]+)/
-    },
-    'xrandr_verbose' => {
-      '.all' => [
-        {
-          '-wrap' => 1,
-          '.ref' => 'screen'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'outputs'
-        }
-      ]
     },
     'y' => {
       '.rgx' => qr/\G([0-9]+)/

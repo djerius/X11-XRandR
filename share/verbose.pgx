@@ -1,7 +1,7 @@
-%grammar xrandr-verbose
+%grammar state
 %version 0.0.1
 
-xrandr-verbose : +screen +outputs
+state : +screen +outputs
 
 screen :
  	- 'Screen' .BLANK+ +screen_id COLON
