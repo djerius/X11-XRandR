@@ -63,7 +63,7 @@ sub gotrule {
         $res = eval { $module_name->new( $_[0] ) };
         if ( $@ ) {
             $res = $_[0];
-            $self->log(
+            $self->{parser}->throw_error(
                 "error instantiating $module_name from @{[ pp $_[0] ]}\n$@\n" );
         }
     }
@@ -71,18 +71,6 @@ sub gotrule {
     return $self->{parser}{parent}{-wrap}
       ? { lc $name => $res }
       : $res;
-}
-
-sub log {
-    my ( $self, $msg ) = @_;
-
-    if ( $ENV{XRANDR_DEBUG} ) {
-        eval { $self->{parser}->throw_error( $msg ) };
-        warn $@;
-    }
-    else {
-        $self->{parser}->throw_error( $msg );
-    }
 }
 
 sub gotrule_boolean {
