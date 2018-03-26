@@ -1,6 +1,6 @@
 package X11::Xrandr;
 
-# ABSTRACT: a really awesome library
+# ABSTRACT: An interface to the C<xrandr> command
 
 use strict;
 use warnings;
