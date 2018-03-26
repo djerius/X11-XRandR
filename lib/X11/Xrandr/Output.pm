@@ -134,7 +134,7 @@ has primary => (
 
 has properties => (
     is        => 'ro',
-    isa       => ArrayRef [ 'X11::Xrandr::Property' ],
+    isa       => ArrayRef [ InstanceOf['X11::Xrandr::Property' ]],
     predicate => 1,
 );
 
