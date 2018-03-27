@@ -87,38 +87,43 @@ property_value : / - ( [^,\n]+ ) /
 modes : mode+ %% EOL
 mode : +mode_name
        .BLANK+ LPAREN +mode_id RPAREN
-       .BLANK+ +refresh
-       .BLANK+ +mode_flags
+       .BLANK+ +dotClock
+       .BLANK+ +modeFlags
        +mode_current
        +mode_preferred
        EOL
-       +mode_horizontal
+       +hMode
        EOL
-       +mode_vertical
+       +vMode
 
 mode_name : /+ ( WORD+ ) /
-mode_flags : mode_flag+ % +
+modeFlags : modeFlag+ % +
 mode_current : ( BLANK+  '*current'  )?
 mode_preferred : ( BLANK+ '+preferred' )?
 
-mode_flag : / ( PLUS 'HSync' | DASH 'HSync' | PLUS 'VSync' | DASH 'VSync' | 'Interlace' | 'DoubleScan' | 'CSync' | PLUS 'CSync' | DASH 'CSync') /
+modeFlag : / ( PLUS 'HSync' | DASH 'HSync' | PLUS 'VSync' | DASH 'VSync' | 'Interlace' | 'DoubleScan' | 'CSync' | PLUS 'CSync' | DASH 'CSync') /
 
-mode_horizontal :
-  + 'h:' .BLANK+ +mode_width .BLANK+ +mode_start .BLANK+ +mode_end .BLANK+ +mode_total .BLANK+ +mode_skew .BLANK+ +mode_sync
+hMode :
+  + 'h:' .BLANK+ +mode_width .BLANK+ +hSyncStart .BLANK+ +hSyncEnd .BLANK+ +hTotal .BLANK+ +hSkew .BLANK+ +hSync
 
-mode_vertical :
-  + 'v:' .BLANK+ +mode_height .BLANK+ +mode_start .BLANK+ +mode_end .BLANK+ +mode_total .BLANK+ +mode_refresh
+vMode :
+  + 'v:' .BLANK+ +mode_height .BLANK+ +vSyncStart .BLANK+ +vSyncEnd .BLANK+ +vTotal .BLANK+ +vSync
 
 mode_width	: / 'width' + integer /
-mode_height	: / 'height' + integer /
-mode_start	: / 'start' + integer /
-mode_end	: / 'end' + integer /
-mode_skew	: / 'skew' + integer /
-mode_total	: / 'total' + integer /
-mode_sync	: 'clock' + frequency
-mode_refresh	: 'clock' + frequency
+hSyncStart	: / 'start' + integer /
+hSyncEnd	: / 'end'   + integer /
+hTotal		: / 'total' + integer /
+hSkew		: / 'skew'  + integer /
+hSync		:   'clock' + frequency
 
-refresh : frequency
+mode_height	: / 'height' + integer /
+vSyncStart	: / 'start'  + integer /
+vSyncEnd	: / 'end'    + integer /
+vTotal		: / 'total'  + integer /
+vSync		:   'clock'  + frequency
+
+dotClock        : frequency
+
 frequency : +frequency_value +frequency_unit
 frequency_value : float
 frequency_unit : / ( (: 'M' | 'K' )? 'Hz' ) /

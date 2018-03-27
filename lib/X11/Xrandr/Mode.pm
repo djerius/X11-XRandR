@@ -46,43 +46,54 @@ has preferred => (
     isa => Bool,
 );
 
-=attr flags
+=attr modeFlags
 
 Video Mode Flags; see L<X11::Xrandr::Types/ModeFlag>
 
 =cut
 
-has flags => (
+has modeFlags => (
     is       => 'ro',
     isa      => ArrayRef [ModeFlag],
     required => 1,
 );
 
-=attr horizontal
+=attr  width
 
-The horizontal component of the mode.  An instance of
-C<X11::Xrandr::ModeHorizontal>.
+=attr  height
+
+=attr  hSyncStart
+
+=attr  hSyncEnd
+
+=attr  hTotal
+
+=attr  hSkew
+
+=attr  vSyncStart
+
+=attr  vSyncEnd
+
+=attr  vTotal
 
 =cut
 
-has horizontal => (
+has $_ => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::ModeHorizontal'],
-    required => 1,
-);
-
-=attr vertical
-
-The vertical component of the mode.  An instance of
-C<X11::Xrandr::ModeVertical>.
-
-=cut
-
-has vertical => (
-    is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::ModeVertical'],
-    required => 1,
-);
+    isa      => PositiveOrZeroInt,
+    required => 1
+  )
+  for qw[
+  width
+  height
+  hSyncStart
+  hSyncEnd
+  hTotal
+  hSkew
+  vSyncStart
+  vSyncEnd
+  vTotal
+];
 
 =attr id
 
@@ -94,13 +105,37 @@ has id => (
     required => 1,
 );
 
-=attr refresh
+=attr dotClock
 
 The refresh rate.  An instance of L<X11::Xrandr::Frequency>.
 
 =cut
 
-has refresh => (
+has dotClock => (
+    is       => 'ro',
+    isa      => InstanceOf ['X11::Xrandr::Frequency'],
+    required => 1,
+);
+
+=attr hSync
+
+The horizontal sync rate.  An instance of L<X11::Xrandr::Frequency>.
+
+=cut
+
+has hSync => (
+    is       => 'ro',
+    isa      => InstanceOf ['X11::Xrandr::Frequency'],
+    required => 1,
+);
+
+=attr vSync
+
+The vertical sync rate.  An instance of L<X11::Xrandr::Frequency>.
+
+=cut
+
+has vSync => (
     is       => 'ro',
     isa      => InstanceOf ['X11::Xrandr::Frequency'],
     required => 1,
@@ -112,6 +147,32 @@ Return a string rendition of the object just as B<xrandr> would.
 
 =cut
 
+=method to_XRRModeInfo
+
+Create an XRRModeInfo object
+
+=cut
+
+sub to_XRRModeInfo {
+
+    require X11::Xrandr::XRRModeInfo;
+    my $self = shift;
+
+    return X11::Xrandr::XRRModeInfo->new(
+        width    => $self->width,
+        height   => $self->height,
+        dotClock => $self->dotClock->to_Hz,
+        hSyncStart => $self->hSyncStart,
+        hSyncEnd => $self->hSyncEnd,
+        hTotal => $self->hTotal,
+        hSkew => $self->hSkew,
+        vSyncStart => $self->vSyncStart,
+        vSyncEnd => $self->vSyncEnd,
+        vTotal => $self->vTotal,
+    );
+
+
+}
 
 1;
 

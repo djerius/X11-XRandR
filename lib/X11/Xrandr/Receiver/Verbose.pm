@@ -75,7 +75,7 @@ sub gotrule {
     }
 
     return $self->{parser}{parent}{-wrap}
-      ? { lc $name => $res }
+      ? { $name => $res }
       : $res;
 }
 
@@ -131,8 +131,8 @@ sub got_screen_dims {
 *got_Timestamp =
 *got_Tracking =
 *got_filter =
-*got_mode_refresh =
-*got_mode_sync =
+*got_hSync =
+*got_vSync =
 *got_panning =
 *got_property_EDID =
 *got_ranges =
@@ -147,9 +147,6 @@ sub got_screen_dims {
 *got_dimension =
 *got_frequency =
 *got_geometry =
-*got_mode =
-*got_mode_horizontal =
-*got_mode_vertical =
 *got_output =
 *got_output_header =
 *got_screen =
@@ -231,6 +228,18 @@ sub got_output_header_reflections {
     $self->gotrule( @_ );
 }
 
+sub got_mode {
+
+    my $self = shift;
+
+    my $hash = merge_hashes( remove_empty_arrays( @_ ) );
+    my ( $hMode, $vMode )  = map { merge_hashes( delete $hash->{$_} ) } qw[ hMode vMode ];
+
+    @{$hash}{keys %$hMode} = values %$hMode;
+    @{$hash}{keys %$vMode} = values %$vMode;
+
+    $self->gotrule( $hash );
+}
 
 
 1;

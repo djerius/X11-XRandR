@@ -7,6 +7,7 @@ use warnings;
 
 use Type::Utils -all;
 use Types::Standard -types;
+use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 
 our $VERSION = '0.01';
 
@@ -23,6 +24,7 @@ use Type::Library
   ModeFlag
   XFixed
   XTransform
+  XID
 );
 
 =type Filter
@@ -121,5 +123,12 @@ declare XTransform,
   ];
 
 1;
+
+=type XID
+
+=cut
+
+declare XID, as PositiveOrZeroInt;
+
 
 # COPYRIGHT

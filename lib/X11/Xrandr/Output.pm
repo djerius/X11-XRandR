@@ -24,50 +24,50 @@ has name => (
     required => 1,
 );
 
-=attr border
+=attr Border
 
 An instance of L<X11::Xrandr::Border>. Optional.
 
-=method has_border
+=method has_Border
 
-I<Boolean> True if L</border> has been specified
+I<Boolean> True if L</Border> has been specified
 
 
 =cut
 
-has border => (
+has Border => (
     is        => 'ro',
     isa       => InstanceOf ['X11::Xrandr::Border'],
     predicate => 1,
 );
 
-=attr clones
+=attr Clones
 
 Optional.
 
-=method has_clones
+=method has_Clones
 
-I<Boolean> True if L<clones> was specified.
+I<Boolean> True if L<Clones> was specified.
 
 =cut
 
-has clones => (
+has Clones => (
     is        => 'ro',
     isa       => ArrayRef [Str],
     predicate => 1,
 );
 
-=attr brightness
+=attr Brightness
 
 Optional.
 
-=method has_brightness
+=method has_Brightness
 
-I<Boolean>  True if L<brightness> was specified.
+I<Boolean>  True if L<Brightness> was specified.
 
 =cut
 
-has brightness => (
+has Brightness => (
     is        => 'ro',
     isa       => Num,
     predicate => 1,
@@ -85,24 +85,24 @@ has connection => (
     required => 1,
 );
 
-=attr crtc
+=attr CRTC
 
 The CRTC value.
 
 =cut
 
-has crtc => (
+has CRTC => (
     is  => 'ro',
     isa => PositiveOrZeroInt
 );
 
-=attr crtcs
+=attr CRTCs
 
 An array of CRTC values.
 
 =cut
 
-has crtcs => (
+has CRTCs => (
     is  => 'ro',
     isa => ArrayRef [PositiveOrZeroInt],
 );
@@ -156,49 +156,49 @@ has dimension => (
     predicate => 1,
 );
 
-=attr gamma
+=attr Gamma
 
 An arrayref of floats. Optional.
 
-=method has_gamma
+=method has_Gamma
 
-I<Boolean>  True if L<gamma> was specified.
+I<Boolean>  True if L<Gamma> was specified.
 
 =cut
 
-has gamma => (
+has Gamma => (
     is        => 'ro',
     isa       => Tuple[ PositiveOrZeroNum, PositiveOrZeroNum, PositiveOrZeroNum],
     predicate => 1,
 );
 
-=attr identifier
+=attr Identifier
 
 =cut
 
-has identifier => (
+has Identifier => (
     is       => 'ro',
     isa      => PositiveOrZeroInt,
     required => 1,
 );
 
-=attr timestamp
+=attr Timestamp
 
 =cut
 
-has timestamp => (
+has Timestamp => (
     is       => 'ro',
     isa      => PositiveOrZeroInt,
     required => 1,
 );
 
-=attr subpixel
+=attr Subpixel
 
 For values, see L<X11::Xrandr::Types/SubPixelOrder>.
 
 =cut
 
-has subpixel => (
+has Subpixel => (
     is       => 'ro',
     isa      => SubPixelOrder,
     required => 1,
@@ -245,45 +245,45 @@ has modes => (
 );
 
 
-=attr panning
+=attr Panning
 
 An instance of L<X11::Xrandr::Geometry>. Optional.
 
-=method has_panning
+=method has_Panning
 
-I<Boolean> True if L</panning> was specified.
+I<Boolean> True if L</Panning> was specified.
 
 =cut
 
-has panning => (
+has Panning => (
     is        => 'ro',
     isa       => InstanceOf ['X11::Xrandr::Geometry'],
     predicate => 1,
 );
 
-=attr tracking
+=attr Tracking
 
 An instance of L<X11::Xrandr::Geometry>. Optional.
 
-=method has_tracking
+=method has_Tracking
 
-I<Boolean> True if L</tracking> was specified.
+I<Boolean> True if L</Tracking> was specified.
 
 =cut
 
-has tracking => (
+has Tracking => (
     is        => 'ro',
     isa       => InstanceOf ['X11::Xrandr::Geometry'],
     predicate => 1,
 );
 
-=attr transform
+=attr Transform
 
 An instance of L<X11::Xrandr::Transform>.
 
 =cut
 
-has transform => (
+has Transform => (
     is       => 'ro',
     isa      => InstanceOf ['X11::Xrandr::Transform'],
     required => 1,

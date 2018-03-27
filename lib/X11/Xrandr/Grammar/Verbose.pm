@@ -603,6 +603,9 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         }
       ]
     },
+    'dotClock' => {
+      '.ref' => 'frequency'
+    },
     'filter' => {
       '.all' => [
         {
@@ -646,6 +649,95 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         }
       ]
     },
+    'hMode' => {
+      '.all' => [
+        {
+          '.ref' => '__'
+        },
+        {
+          '.rgx' => qr/\Gh:/
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'mode_width'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'hSyncStart'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'hSyncEnd'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'hTotal'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'hSkew'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'hSync'
+        }
+      ]
+    },
+    'hSkew' => {
+      '.rgx' => qr/\Gskew\s+([0-9]+)/
+    },
+    'hSync' => {
+      '.all' => [
+        {
+          '.rgx' => qr/\Gclock/
+        },
+        {
+          '.ref' => '__'
+        },
+        {
+          '.ref' => 'frequency'
+        }
+      ]
+    },
+    'hSyncEnd' => {
+      '.rgx' => qr/\Gend\s+([0-9]+)/
+    },
+    'hSyncStart' => {
+      '.rgx' => qr/\Gstart\s+([0-9]+)/
+    },
+    'hTotal' => {
+      '.rgx' => qr/\Gtotal\s+([0-9]+)/
+    },
     'hexint' => {
       '.rgx' => qr/\G(0x[0-9a-fA-F]{2})/
     },
@@ -686,7 +778,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         },
         {
           '-wrap' => 1,
-          '.ref' => 'refresh'
+          '.ref' => 'dotClock'
         },
         {
           '+min' => 1,
@@ -695,7 +787,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         },
         {
           '-wrap' => 1,
-          '.ref' => 'mode_flags'
+          '.ref' => 'modeFlags'
         },
         {
           '-wrap' => 1,
@@ -710,14 +802,36 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         },
         {
           '-wrap' => 1,
-          '.ref' => 'mode_horizontal'
+          '.ref' => 'hMode'
         },
         {
           '.ref' => 'EOL'
         },
         {
           '-wrap' => 1,
-          '.ref' => 'mode_vertical'
+          '.ref' => 'vMode'
+        }
+      ]
+    },
+    'modeFlag' => {
+      '.rgx' => qr/\G(\+HSync|\-HSync|\+VSync|\-VSync|Interlace|DoubleScan|CSync|\+CSync|\-CSync)/
+    },
+    'modeFlags' => {
+      '.all' => [
+        {
+          '.ref' => 'modeFlag'
+        },
+        {
+          '+min' => 0,
+          '-flat' => 1,
+          '.all' => [
+            {
+              '.ref' => '__'
+            },
+            {
+              '.ref' => 'modeFlag'
+            }
+          ]
         }
       ]
     },
@@ -733,97 +847,8 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         }
       ]
     },
-    'mode_end' => {
-      '.rgx' => qr/\Gend\s+([0-9]+)/
-    },
-    'mode_flag' => {
-      '.rgx' => qr/\G(\+HSync|\-HSync|\+VSync|\-VSync|Interlace|DoubleScan|CSync|\+CSync|\-CSync)/
-    },
-    'mode_flags' => {
-      '.all' => [
-        {
-          '.ref' => 'mode_flag'
-        },
-        {
-          '+min' => 0,
-          '-flat' => 1,
-          '.all' => [
-            {
-              '.ref' => '__'
-            },
-            {
-              '.ref' => 'mode_flag'
-            }
-          ]
-        }
-      ]
-    },
     'mode_height' => {
       '.rgx' => qr/\Gheight\s+([0-9]+)/
-    },
-    'mode_horizontal' => {
-      '.all' => [
-        {
-          '.ref' => '__'
-        },
-        {
-          '.rgx' => qr/\Gh:/
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_width'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_start'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_end'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_total'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_skew'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_sync'
-        }
-      ]
     },
     'mode_id' => {
       '.ref' => 'hexint'
@@ -840,96 +865,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         },
         {
           '.rgx' => qr/\G\+preferred/
-        }
-      ]
-    },
-    'mode_refresh' => {
-      '.all' => [
-        {
-          '.rgx' => qr/\Gclock/
-        },
-        {
-          '.ref' => '__'
-        },
-        {
-          '.ref' => 'frequency'
-        }
-      ]
-    },
-    'mode_skew' => {
-      '.rgx' => qr/\Gskew\s+([0-9]+)/
-    },
-    'mode_start' => {
-      '.rgx' => qr/\Gstart\s+([0-9]+)/
-    },
-    'mode_sync' => {
-      '.all' => [
-        {
-          '.rgx' => qr/\Gclock/
-        },
-        {
-          '.ref' => '__'
-        },
-        {
-          '.ref' => 'frequency'
-        }
-      ]
-    },
-    'mode_total' => {
-      '.rgx' => qr/\Gtotal\s+([0-9]+)/
-    },
-    'mode_vertical' => {
-      '.all' => [
-        {
-          '.ref' => '__'
-        },
-        {
-          '.rgx' => qr/\Gv:/
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_height'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_start'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_end'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_total'
-        },
-        {
-          '+min' => 1,
-          '-skip' => 1,
-          '.ref' => 'BLANK'
-        },
-        {
-          '-wrap' => 1,
-          '.ref' => 'mode_refresh'
         }
       ]
     },
@@ -1338,9 +1273,6 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
         }
       ]
     },
-    'refresh' => {
-      '.ref' => 'frequency'
-    },
     'right' => {
       '.rgx' => qr/\G([0-9]+)/
     },
@@ -1494,6 +1426,83 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.64)
           '.ref' => 'geometry'
         }
       ]
+    },
+    'vMode' => {
+      '.all' => [
+        {
+          '.ref' => '__'
+        },
+        {
+          '.rgx' => qr/\Gv:/
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'mode_height'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'vSyncStart'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'vSyncEnd'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'vTotal'
+        },
+        {
+          '+min' => 1,
+          '-skip' => 1,
+          '.ref' => 'BLANK'
+        },
+        {
+          '-wrap' => 1,
+          '.ref' => 'vSync'
+        }
+      ]
+    },
+    'vSync' => {
+      '.all' => [
+        {
+          '.rgx' => qr/\Gclock/
+        },
+        {
+          '.ref' => '__'
+        },
+        {
+          '.ref' => 'frequency'
+        }
+      ]
+    },
+    'vSyncEnd' => {
+      '.rgx' => qr/\Gend\s+([0-9]+)/
+    },
+    'vSyncStart' => {
+      '.rgx' => qr/\Gstart\s+([0-9]+)/
+    },
+    'vTotal' => {
+      '.rgx' => qr/\Gtotal\s+([0-9]+)/
     },
     'x' => {
       '.rgx' => qr/\G([0-9]+)/
