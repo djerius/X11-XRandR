@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.006;
+
 
 use ExtUtils::MakeMaker;
 
@@ -13,7 +13,7 @@ install_share dist => "share";
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "a really awesome library",
+  "ABSTRACT" => "An interface to the X11 XRandR extension",
   "AUTHOR" => "Diab Jerius <djerius\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
@@ -21,37 +21,27 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "X11-Xrandr",
   "LICENSE" => "gpl",
-  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "X11::Xrandr",
   "PREREQ_PM" => {
-    "Carp" => 0,
     "Data::Dump" => 0,
     "IPC::Cmd" => 0,
     "Memoize" => 0,
-    "Module::Runtime" => 0,
-    "Moo" => 0,
+    "Module::Runtime" => "0.016",
+    "Moo" => "2.003004",
     "MooX::StrictConstructor" => 0,
-    "Pegex::Grammar" => 0,
-    "Pegex::Parser" => 0,
-    "Pegex::Tree" => 0,
+    "Pegex" => "0.64",
     "String::CamelCase" => 0,
-    "Type::Library" => 0,
-    "Type::Utils" => 0,
-    "Types::Common::Numeric" => 0,
-    "Types::Standard" => 0,
-    "base" => 0,
-    "constant" => 0,
-    "namespace::clean" => 0,
-    "overload" => 0,
-    "strict" => 0,
-    "warnings" => 0
+    "Type::Library" => "1.002001",
+    "Type::Utils" => "1.002001",
+    "Types::Common::Numeric" => "1.002001",
+    "Types::Standard" => "1.002001",
+    "namespace::clean" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Test2::V0" => 0,
     "Test::More" => 0
   },
   "VERSION" => "0.01",
@@ -62,7 +52,6 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Carp" => 0,
   "Data::Dump" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
@@ -70,25 +59,17 @@ my %FallbackPrereqs = (
   "IPC::Cmd" => 0,
   "IPC::Open3" => 0,
   "Memoize" => 0,
-  "Module::Runtime" => 0,
-  "Moo" => 0,
+  "Module::Runtime" => "0.016",
+  "Moo" => "2.003004",
   "MooX::StrictConstructor" => 0,
-  "Pegex::Grammar" => 0,
-  "Pegex::Parser" => 0,
-  "Pegex::Tree" => 0,
+  "Pegex" => "0.64",
   "String::CamelCase" => 0,
-  "Test2::V0" => 0,
   "Test::More" => 0,
-  "Type::Library" => 0,
-  "Type::Utils" => 0,
-  "Types::Common::Numeric" => 0,
-  "Types::Standard" => 0,
-  "base" => 0,
-  "constant" => 0,
-  "namespace::clean" => 0,
-  "overload" => 0,
-  "strict" => 0,
-  "warnings" => 0
+  "Type::Library" => "1.002001",
+  "Type::Utils" => "1.002001",
+  "Types::Common::Numeric" => "1.002001",
+  "Types::Standard" => "1.002001",
+  "namespace::clean" => 0
 );
 
 

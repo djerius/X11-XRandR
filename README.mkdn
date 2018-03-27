@@ -1,12 +1,17 @@
 # NAME
 
-X11::Xrandr - a really awesome library
+X11::Xrandr - An interface to the X11 XRandR extension
 
 # VERSION
 
 version 0.01
 
-# SYNOPSIS
+# DESCRIPTION
+
+The [X11::Xrandr](https://metacpan.org/pod/X11::Xrandr) Module and others in this distribution are
+dedicated to interfacing with the X11 XRandR extension.
+
+This distribution is currently in great flux.
 
 # BUGS
 
@@ -23,13 +28,19 @@ feature.
 The development version is on github at [https://github.com/djerius/x11-xrandr](https://github.com/djerius/x11-xrandr)
 and may be cloned from [git://github.com/djerius/x11-xrandr.git](git://github.com/djerius/x11-xrandr.git)
 
+# SEE ALSO
+
+Please see those modules/websites for more information related to this module.
+
+- [X11::XCB](https://metacpan.org/pod/X11::XCB)
+
 # AUTHOR
 
 Diab Jerius <djerius@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2018 by Smithsonian Astrophysical Observatory.
+This software is Copyright (c) 2018 by Diab Jerius.
 
 This is free software, licensed under:
 

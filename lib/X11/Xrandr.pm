@@ -1,6 +1,6 @@
 package X11::Xrandr;
 
-# ABSTRACT: An interface to the C<xrandr> command
+# ABSTRACT: An interface to the X11 XRandR extension
 
 use strict;
 use warnings;
@@ -14,8 +14,13 @@ our $VERSION = '0.01';
 __END__
 
 
-=head1 SYNOPSIS
+=head1 DESCRIPTION
 
+The L<X11::Xrandr> Module and others in this distribution are
+dedicated to interfacing with the X11 XRandR extension.
+
+This distribution is currently in great flux.
 
 =head1 SEE ALSO
 
+L<X11::XCB>
