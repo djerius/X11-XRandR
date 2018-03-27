@@ -19,9 +19,9 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => 0,
     "File::ShareDir::Install" => "0.06"
   },
-  "DISTNAME" => "X11-Xrandr",
+  "DISTNAME" => "X11-XRandR",
   "LICENSE" => "gpl",
-  "NAME" => "X11::Xrandr",
+  "NAME" => "X11::XRandR",
   "PREREQ_PM" => {
     "Data::Dump" => 0,
     "IPC::Cmd" => 0,

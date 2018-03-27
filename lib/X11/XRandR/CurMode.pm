@@ -1,10 +1,10 @@
-package X11::Xrandr::CurMode;
+package X11::XRandR::CurMode;
 
 # ABSTRACT: Current Mode
 
 use Types::Standard qw[ InstanceOf ];
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 use Moo;
 use namespace::clean;
@@ -16,19 +16,19 @@ use overload '""' => \&to_string;
 
 =attr geometry
 
-An instance of L<X11::Xrandr::Geometry>.
+An instance of L<X11::XRandR::Geometry>.
 
 =cut
 
 has geometry => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Geometry'],
+    isa      => InstanceOf ['X11::XRandR::Geometry'],
     required => 1
 );
 
 =attr rotation
 
-For values, see L<X11::Xrandr::Types/Direction>.
+For values, see L<X11::XRandR::Types/Direction>.
 
 =cut
 
@@ -40,7 +40,7 @@ has rotation => (
 
 =attr reflection
 
-For values, see L<X11::Xrandr::Types/Reflection>. Optional.
+For values, see L<X11::XRandR::Types/Reflection>. Optional.
 
 =method has_reflection
 
@@ -92,7 +92,7 @@ my %MapReflectionOut = (
 
 =method map_reflection_in
 
-Map a reflection from C<xrandr>'s nomenclature for the current mode to a L<X11::Xrandr::Type/Reflection> value.
+Map a reflection from C<xrandr>'s nomenclature for the current mode to a L<X11::XRandR::Type/Reflection> value.
 
 =cut
 
@@ -103,7 +103,7 @@ sub map_reflection_in {
 
 =method map_reflection_out
 
-Map a L<X11::Xrandr::Type/Reflection> value to C<xrandr>'s nomenclature for the current mode.
+Map a L<X11::XRandR::Type/Reflection> value to C<xrandr>'s nomenclature for the current mode.
 
 =cut
 

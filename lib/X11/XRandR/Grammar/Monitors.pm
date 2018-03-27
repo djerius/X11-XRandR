@@ -1,4 +1,4 @@
-package X11::Xrandr::Grammar::Monitors;
+package X11::XRandR::Grammar::Monitors;
 
 # ABSTRACT: The Compiled Pegex Grammar for xrandr --listmonitors output
 

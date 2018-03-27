@@ -1,10 +1,10 @@
-package X11::Xrandr::CurCrtc;
+package X11::XRandR::CurCrtc;
 
 # ABSTRACT: Current CRTC
 
 use Types::Standard qw[ InstanceOf ];
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 use Moo;
 use namespace::clean;
@@ -16,7 +16,7 @@ use overload '""' => \&to_string;
 
 =attr panning
 
-An instance of L<X11::Xrandr::Geometry>. Optional.
+An instance of L<X11::XRandR::Geometry>. Optional.
 
 =method has_panning
 
@@ -26,13 +26,13 @@ I<Boolean>  True if L<panning> was specified.
 
 has panning => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Geometry'],
+    isa      => InstanceOf ['X11::XRandR::Geometry'],
                 predicate => 1
 );
 
 =attr tracking
 
-An instance of L<X11::Xrandr::Geometry>. Optional.
+An instance of L<X11::XRandR::Geometry>. Optional.
 
 =method has_tracking
 
@@ -42,13 +42,13 @@ I<Boolean>  True if L<tracking> was specified.
 
 has tracking => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Geometry'],
+    isa      => InstanceOf ['X11::XRandR::Geometry'],
                 predicate => 1
 );
 
 =attr border
 
-An instance of L<X11::Xrandr::Border>. Optional.
+An instance of L<X11::XRandR::Border>. Optional.
 
 =method has_border
 
@@ -58,7 +58,7 @@ I<Boolean>  True if L<border> was specified.
 
 has border => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Border'],
+    isa      => InstanceOf ['X11::XRandR::Border'],
                 predicate => 1
 );
 

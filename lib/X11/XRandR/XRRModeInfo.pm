@@ -1,10 +1,10 @@
-package X11::Xrandr::XRRModeInfo;
+package X11::XRandR::XRRModeInfo;
 
 # ABSTRACT: Mirror of X11 XRRModeInfo structure
 
 use Types::Standard -types;
 use Types::Common::Numeric -types;
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 
 use Moo;
@@ -71,7 +71,7 @@ has name => ( is => 'ro', isa => Str );
 
 =attr modeFlags
 
-Video Mode Flags; see L<X11::Xrandr::Types/ModeFlag>
+Video Mode Flags; see L<X11::XRandR::Types/ModeFlag>
 
 =cut
 

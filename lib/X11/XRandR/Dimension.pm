@@ -1,4 +1,4 @@
-package X11::Xrandr::Dimension;
+package X11::XRandR::Dimension;
 
 # ABSTRACT: Dimension of Screen or Display
 

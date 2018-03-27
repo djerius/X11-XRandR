@@ -1,10 +1,10 @@
-package X11::Xrandr::Transform;
+package X11::XRandR::Transform;
 
 # ABSTRACT: A transform
 
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 use Types::Standard qw[ Undef ];
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 use Moo;
 use namespace::clean;
@@ -14,7 +14,7 @@ our $VERSION = '0.01';
 
 =attr filter
 
-See L<X11::Xrandr::Types/Filter> for values.  Optional
+See L<X11::XRandR::Types/Filter> for values.  Optional
 
 =method has_filter
 
@@ -31,7 +31,7 @@ has filter => (
 
 =attr matrix
 
-A transformation matrix.  See L<X11::Xrandr::Types/XTransform>.
+A transformation matrix.  See L<X11::XRandR::Types/XTransform>.
 
 =cut
 

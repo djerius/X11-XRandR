@@ -1,4 +1,4 @@
-package X11::Xrandr::Offset;
+package X11::XRandR::Offset;
 
 # ABSTRACT: Offset
 

@@ -1,6 +1,6 @@
 # NAME
 
-X11::Xrandr - An interface to the X11 XRandR extension
+X11::XRandR - An interface to the X11 XRandR extension
 
 # VERSION
 
@@ -8,7 +8,7 @@ version 0.01
 
 # DESCRIPTION
 
-The [X11::Xrandr](https://metacpan.org/pod/X11::Xrandr) Module and others in this distribution are
+The [X11::XRandR](https://metacpan.org/pod/X11::XRandR) Module and others in this distribution are
 dedicated to interfacing with the X11 XRandR extension.
 
 This distribution is currently in great flux.
@@ -16,8 +16,8 @@ This distribution is currently in great flux.
 # BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-[https://rt.cpan.org/Public/Dist/Display.html?Name=X11-Xrandr](https://rt.cpan.org/Public/Dist/Display.html?Name=X11-Xrandr) or by email
-to [bug-X11-Xrandr@rt.cpan.org](mailto:bug-X11-Xrandr@rt.cpan.org).
+[https://rt.cpan.org/Public/Dist/Display.html?Name=X11-XRandR](https://rt.cpan.org/Public/Dist/Display.html?Name=X11-XRandR) or by email
+to [bug-X11-XRandR@rt.cpan.org](mailto:bug-X11-XRandR@rt.cpan.org).
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired

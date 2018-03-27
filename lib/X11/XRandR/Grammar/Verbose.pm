@@ -1,4 +1,4 @@
-package X11::Xrandr::Grammar::Verbose;
+package X11::XRandR::Grammar::Verbose;
 
 # ABSTRACT: The Compiled Pegex Grammar for xrandr --verbose output
 

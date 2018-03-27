@@ -1,10 +1,10 @@
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
-use X11::Xrandr::State;
+use X11::XRandR::State;
 
 use Data::Dump;
 
-my $state = X11::Xrandr::State->query;
+my $state = X11::XRandR::State->query;
 
 dd $state;

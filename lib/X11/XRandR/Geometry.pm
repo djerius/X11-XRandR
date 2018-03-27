@@ -1,11 +1,11 @@
-package X11::Xrandr::Geometry;
+package X11::XRandR::Geometry;
 
 # ABSTRACT: A Screen or output geometry
 
 use Types::Standard qw[ InstanceOf ];
 
-use X11::Xrandr::Dimension;
-use X11::Xrandr::Offset;
+use X11::XRandR::Dimension;
+use X11::XRandR::Offset;
 
 use Moo;
 use namespace::clean;
@@ -17,27 +17,27 @@ use overload '""' => \&to_string;
 
 =attr dimension
 
-An instance of L<X11::Xrandr::Dimension>.
+An instance of L<X11::XRandR::Dimension>.
 
 =cut
 
 
 has dimension => (
     is       => 'rw',
-    isa      => InstanceOf ['X11::Xrandr::Dimension'],
+    isa      => InstanceOf ['X11::XRandR::Dimension'],
     required => 1,
 );
 
 =attr dimension
 
-An instance of L<X11::Xrandr::Offset>.
+An instance of L<X11::XRandR::Offset>.
 
 =cut
 
 has offset => (
     is      => 'rw',
-    isa     => InstanceOf ['X11::Xrandr::Offset'],
-    default => sub { X11::Xrandr::Offset->new },
+    isa     => InstanceOf ['X11::XRandR::Offset'],
+    default => sub { X11::XRandR::Offset->new },
 );
 
 =method to_string

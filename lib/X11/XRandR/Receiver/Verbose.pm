@@ -1,6 +1,6 @@
-package X11::Xrandr::Receiver::Verbose;
+package X11::XRandR::Receiver::Verbose;
 
-# ABSTRACT: The Pegex Receiver for L<X11::Xrandr::Grammar::Verbose>
+# ABSTRACT: The Pegex Receiver for L<X11::XRandR::Grammar::Verbose>
 
 =for Pod::Coverage *EVERYTHING*
 
@@ -22,7 +22,7 @@ use String::CamelCase qw[ camelize ];
 
 use Data::Dump qw[ dd pp ];
 
-use X11::Xrandr::CurMode;
+use X11::XRandR::CurMode;
 
 our %NameMap = ( dimension_mm => 'dimension', );
 
@@ -38,7 +38,7 @@ sub merge_hashes {
 # keep looking for it.
 memoize( '_require_module' );
 sub _require_module {
-    my $name = 'X11::Xrandr::' . camelize( $_[0] );
+    my $name = 'X11::XRandR::' . camelize( $_[0] );
     return $name if eval { require_module( $name ); 1; };
     return;
 }
@@ -217,7 +217,7 @@ sub got_hexint {
 
 sub got_cur_mode_reflection {
     my $self = shift;
-    $self->gotrule( X11::Xrandr::CurMode->map_reflection_in( $_[0] ) );
+    $self->gotrule( X11::XRandR::CurMode->map_reflection_in( $_[0] ) );
 }
 
 sub got_output_header_reflections {

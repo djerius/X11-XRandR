@@ -1,4 +1,4 @@
-package X11::Xrandr;
+package X11::XRandR;
 
 # ABSTRACT: An interface to the X11 XRandR extension
 
@@ -16,7 +16,7 @@ __END__
 
 =head1 DESCRIPTION
 
-The L<X11::Xrandr> Module and others in this distribution are
+The L<X11::XRandR> Module and others in this distribution are
 dedicated to interfacing with the X11 XRandR extension.
 
 This distribution is currently in great flux.

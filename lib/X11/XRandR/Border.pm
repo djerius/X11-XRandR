@@ -1,4 +1,4 @@
-package X11::Xrandr::Border;
+package X11::XRandR::Border;
 
 # ABSTRACT: Border
 

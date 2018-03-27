@@ -1,4 +1,4 @@
-package X11::Xrandr::Types;
+package X11::XRandR::Types;
 
 # ABSTRACT: Types
 

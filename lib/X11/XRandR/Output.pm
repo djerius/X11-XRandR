@@ -1,10 +1,10 @@
-package X11::Xrandr::Output;
+package X11::XRandR::Output;
 
 # ABSTRACT: A video output
 
 use Types::Standard -types;
 use Types::Common::Numeric qw[ PositiveOrZeroNum PositiveOrZeroInt ];
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 use Moo;
 use namespace::clean;
@@ -26,7 +26,7 @@ has name => (
 
 =attr Border
 
-An instance of L<X11::Xrandr::Border>. Optional.
+An instance of L<X11::XRandR::Border>. Optional.
 
 =method has_Border
 
@@ -37,7 +37,7 @@ I<Boolean> True if L</Border> has been specified
 
 has Border => (
     is        => 'ro',
-    isa       => InstanceOf ['X11::Xrandr::Border'],
+    isa       => InstanceOf ['X11::XRandR::Border'],
     predicate => 1,
 );
 
@@ -75,7 +75,7 @@ has Brightness => (
 
 =attr connection
 
-The state of the connection.  See L<X11::Xrandr::Types/Connection> for values.
+The state of the connection.  See L<X11::XRandR::Types/Connection> for values.
 
 =cut
 
@@ -110,7 +110,7 @@ has CRTCs => (
 
 =attr cur_crtc
 
-An instance of L<X11::Xrandr::CurCrtc>. Optional.
+An instance of L<X11::XRandR::CurCrtc>. Optional.
 
 =method has_cur_crtc
 
@@ -120,13 +120,13 @@ I<Boolean> True if L</cur_crtc> has been specified
 
 has cur_crtc => (
     is        => 'ro',
-    isa       => InstanceOf ['X11::Xrandr::CurCrtc'],
+    isa       => InstanceOf ['X11::XRandR::CurCrtc'],
     predicate => 1,
 );
 
 =attr cur_mode
 
-An instance of L<X11::Xrandr::CurMode>. Optional.
+An instance of L<X11::XRandR::CurMode>. Optional.
 
 =method has_cur_mode
 
@@ -136,13 +136,13 @@ I<Boolean> True if L</cur_mode> has been specified
 
 has cur_mode => (
     is        => 'ro',
-    isa       => InstanceOf ['X11::Xrandr::CurMode'],
+    isa       => InstanceOf ['X11::XRandR::CurMode'],
     predicate => 1,
 );
 
 =attr dimension
 
-An instance of L<X11::Xrandr::Dimension>. Optional.
+An instance of L<X11::XRandR::Dimension>. Optional.
 
 =method has_dimension
 
@@ -152,7 +152,7 @@ I<Boolean>  True if L<dimension> was specified.
 
 has dimension => (
     is        => 'ro',
-    isa       => InstanceOf ['X11::Xrandr::Dimension'],
+    isa       => InstanceOf ['X11::XRandR::Dimension'],
     predicate => 1,
 );
 
@@ -194,7 +194,7 @@ has Timestamp => (
 
 =attr Subpixel
 
-For values, see L<X11::Xrandr::Types/SubPixelOrder>.
+For values, see L<X11::XRandR::Types/SubPixelOrder>.
 
 =cut
 
@@ -206,7 +206,7 @@ has Subpixel => (
 
 =attr rotations
 
-An array of L<X11::Xrandr::Types/Direction> values
+An array of L<X11::XRandR::Types/Direction> values
 
 =cut
 
@@ -230,7 +230,7 @@ has reflections => (
 
 =attr modes
 
-An array of L<X11::Xrandr::Mode> objects.
+An array of L<X11::XRandR::Mode> objects.
 
 =method has_modes
 
@@ -240,14 +240,14 @@ I<Boolean> True if L</modes> was specified.
 
 has modes => (
     is        => 'ro',
-    isa       => ArrayRef [ InstanceOf ['X11::Xrandr::Mode'] ],
+    isa       => ArrayRef [ InstanceOf ['X11::XRandR::Mode'] ],
     predicate => 1,
 );
 
 
 =attr Panning
 
-An instance of L<X11::Xrandr::Geometry>. Optional.
+An instance of L<X11::XRandR::Geometry>. Optional.
 
 =method has_Panning
 
@@ -257,13 +257,13 @@ I<Boolean> True if L</Panning> was specified.
 
 has Panning => (
     is        => 'ro',
-    isa       => InstanceOf ['X11::Xrandr::Geometry'],
+    isa       => InstanceOf ['X11::XRandR::Geometry'],
     predicate => 1,
 );
 
 =attr Tracking
 
-An instance of L<X11::Xrandr::Geometry>. Optional.
+An instance of L<X11::XRandR::Geometry>. Optional.
 
 =method has_Tracking
 
@@ -273,19 +273,19 @@ I<Boolean> True if L</Tracking> was specified.
 
 has Tracking => (
     is        => 'ro',
-    isa       => InstanceOf ['X11::Xrandr::Geometry'],
+    isa       => InstanceOf ['X11::XRandR::Geometry'],
     predicate => 1,
 );
 
 =attr Transform
 
-An instance of L<X11::Xrandr::Transform>.
+An instance of L<X11::XRandR::Transform>.
 
 =cut
 
 has Transform => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Transform'],
+    isa      => InstanceOf ['X11::XRandR::Transform'],
     required => 1,
 );
 
@@ -302,7 +302,7 @@ has primary => (
 
 =attr properties
 
-An array of L<X11::Xrandr::Property> objects. Optional
+An array of L<X11::XRandR::Property> objects. Optional
 
 =method has_properties
 
@@ -312,7 +312,7 @@ I<Boolean> True if L</properties> was specified.
 
 has properties => (
     is        => 'ro',
-    isa       => ArrayRef [ InstanceOf['X11::Xrandr::Property' ]],
+    isa       => ArrayRef [ InstanceOf['X11::XRandR::Property' ]],
     predicate => 1,
 );
 
@@ -351,7 +351,7 @@ my %MapReflectionOut = (
 
 =method map_reflection_in
 
-Map a reflection from C<xrandr>'s nomenclature for an output to a L<X11::Xrandr::Type/Reflection> value.
+Map a reflection from C<xrandr>'s nomenclature for an output to a L<X11::XRandR::Type/Reflection> value.
 
 =cut
 
@@ -362,7 +362,7 @@ sub map_reflection_in {
 
 =method map_reflection_out
 
-Map a L<X11::Xrandr::Type/Reflection> value  to  C<xrandr>'s nomenclature for an output.
+Map a L<X11::XRandR::Type/Reflection> value  to  C<xrandr>'s nomenclature for an output.
 
 =cut
 

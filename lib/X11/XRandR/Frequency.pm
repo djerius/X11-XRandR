@@ -1,4 +1,4 @@
-package X11::Xrandr::Frequency;
+package X11::XRandR::Frequency;
 
 # ABSTRACT: A Frequency value
 

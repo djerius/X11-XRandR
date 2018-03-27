@@ -1,11 +1,11 @@
-package X11::Xrandr::Screen;
+package X11::XRandR::Screen;
 
 # ABSTRACT: A Screen
 
 use Types::Standard qw[ InstanceOf ];
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 use Moo;
 use namespace::clean;
@@ -29,13 +29,13 @@ has id => (
 
 =attr cur_dim
 
-Instances of L<X11::Xrandr::Dimension>.
+Instances of L<X11::XRandR::Dimension>.
 
 =cut
 
 has $_  => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Dimension'],
+    isa      => InstanceOf ['X11::XRandR::Dimension'],
     required => 1,
 ) for qw[ min_dim max_dim cur_dim ];
 

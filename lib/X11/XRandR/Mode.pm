@@ -1,10 +1,10 @@
-package X11::Xrandr::Mode;
+package X11::XRandR::Mode;
 
 # ABSTRACT: A Video Mode
 
 use Types::Standard qw[ ArrayRef InstanceOf Bool Str ];
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
-use X11::Xrandr::Types -types;
+use X11::XRandR::Types -types;
 
 use Moo;
 use namespace::clean;
@@ -48,7 +48,7 @@ has preferred => (
 
 =attr modeFlags
 
-Video Mode Flags; see L<X11::Xrandr::Types/ModeFlag>
+Video Mode Flags; see L<X11::XRandR::Types/ModeFlag>
 
 =cut
 
@@ -107,37 +107,37 @@ has id => (
 
 =attr dotClock
 
-The refresh rate.  An instance of L<X11::Xrandr::Frequency>.
+The refresh rate.  An instance of L<X11::XRandR::Frequency>.
 
 =cut
 
 has dotClock => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Frequency'],
+    isa      => InstanceOf ['X11::XRandR::Frequency'],
     required => 1,
 );
 
 =attr hSync
 
-The horizontal sync rate.  An instance of L<X11::Xrandr::Frequency>.
+The horizontal sync rate.  An instance of L<X11::XRandR::Frequency>.
 
 =cut
 
 has hSync => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Frequency'],
+    isa      => InstanceOf ['X11::XRandR::Frequency'],
     required => 1,
 );
 
 =attr vSync
 
-The vertical sync rate.  An instance of L<X11::Xrandr::Frequency>.
+The vertical sync rate.  An instance of L<X11::XRandR::Frequency>.
 
 =cut
 
 has vSync => (
     is       => 'ro',
-    isa      => InstanceOf ['X11::Xrandr::Frequency'],
+    isa      => InstanceOf ['X11::XRandR::Frequency'],
     required => 1,
 );
 
@@ -155,10 +155,10 @@ Create an XRRModeInfo object
 
 sub to_XRRModeInfo {
 
-    require X11::Xrandr::XRRModeInfo;
+    require X11::XRandR::XRRModeInfo;
     my $self = shift;
 
-    return X11::Xrandr::XRRModeInfo->new(
+    return X11::XRandR::XRRModeInfo->new(
         width    => $self->width,
         height   => $self->height,
         dotClock => $self->dotClock->to_Hz,
