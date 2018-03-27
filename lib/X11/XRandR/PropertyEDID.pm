@@ -8,7 +8,7 @@ use Moo;
 use namespace::clean;
 use MooX::StrictConstructor;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 extends 'X11::XRandR::Property';
 

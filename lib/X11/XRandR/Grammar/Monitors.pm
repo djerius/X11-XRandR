@@ -8,7 +8,7 @@ use warnings;
 use base 'Pegex::Grammar';
 use constant file => './share/monitors.pgx';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub make_tree {
 }

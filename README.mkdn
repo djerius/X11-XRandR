@@ -4,7 +4,7 @@ X11::XRandR - An interface to the X11 XRandR extension
 
 # VERSION
 
-version 0.01
+version 0.02
 
 # DESCRIPTION
 

@@ -9,7 +9,7 @@ use Type::Utils -all;
 use Types::Standard -types;
 use Types::Common::Numeric qw[ PositiveOrZeroInt ];
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Type::Library
   -base,
