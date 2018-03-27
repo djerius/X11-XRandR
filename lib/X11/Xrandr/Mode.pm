@@ -112,54 +112,6 @@ Return a string rendition of the object just as B<xrandr> would.
 
 =cut
 
-sub to_string {
-
-    my $self = shift;
-
-    my $string
-      = sprintf( "%s (0x%x) %s", $self->geometry, $self->id, $self->rotation );
-
-    $string .= ' ' . $self->map_reflection_out( $self->reflection )
-      if $self->reflection ne 'normal';
-
-    $string;
-}
-
-my %MapReflectionIn = (
-    none           => 'normal',
-    'X axis'       => 'x',
-    'Y axis'       => 'y',
-    'X and Y axis' => 'xy',
-);
-
-my %MapReflectionOut = (
-    normal => 'none',
-    'x'    => 'X axis',
-    'y'    => 'Y axis',
-    'xy'   => 'X and Y axis',
-);
-
-=method map_reflection_in
-
-Map a reflection from C<xrandr>'s nomenclature for a mode to a L<X11::Xrandr::Type/Reflection> value
-
-=cut
-
-sub map_reflection_in {
-    my $self = shift;
-    return $MapReflectionIn{ $_[0] };
-}
-
-=method map_reflection_out
-
-Map a L<X11::Xrandr::Type/Reflection> value to C<xrandr>'s nomenclature for a mode.
-
-=cut
-
-sub map_reflection_out {
-    my $self = shift;
-    return $MapReflectionOut{ $_[0] };
-}
 
 1;
 
