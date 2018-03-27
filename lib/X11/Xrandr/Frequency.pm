@@ -37,6 +37,26 @@ has unit => (
     required => 1,
 );
 
+=method to_Hz
+
+Convert the value to Hz.
+
+=cut
+
+my %to_Hz = (
+    MHz => 1e6,
+    KHz => 1e3,
+    Hz  => 1,
+);
+
+sub to_Hz {
+
+    my $self = shift;
+
+    return $self->value * $to_Hz{ $self->unit };
+}
+
+
 =method to_string
 
 Return a string rendition of the object just as B<xrandr> would.
