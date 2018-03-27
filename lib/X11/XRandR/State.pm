@@ -49,12 +49,10 @@ Returns an instance of L<X11::XRandR::State>.
 
 sub query {
 
-    my $class = shift;
-
     IPC::Cmd::can_run( 'xrandr' )
       or Carp::croak( "xrandr command is not in path\n" );
 
-    my ( $success, $error_message, $full_buf, $stdout_buf, $stderr_buf )
+    my ( $success, $error_message, undef, $stdout_buf, undef )
       = IPC::Cmd::run(
         command => [qw ( xrandr --verbose )],
         verbose => 0
